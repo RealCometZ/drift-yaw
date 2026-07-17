@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="drift-yaw: advanced anti-aim system, defensive tools, and AI helpers for Neverlose CS:GO. Clean breaks. Zero noise."
+    />
+    <meta name="theme-color" content="#0a0a0c" />
+    <title>drift-yaw · Conditional AA for Neverlose</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <div class="bg-atmosphere" aria-hidden="true"></div>
+
+    <!-- ═══════════ NAV ═══════════ -->
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#top" class="logo" aria-label="drift-yaw home">
+          <img class="logo-mark" src="assets/logo.svg" width="28" height="28" alt="" />
+          drift-yaw
+          <span class="logo-badge" data-version>DEBUG 7</span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a class="btn btn-primary btn-sm mobile-cta" href="#pricing" data-link="purchase">Get Access</a>
+        </nav>
+
+        <div class="nav-cta">
+          <a class="btn btn-primary btn-sm" href="#pricing" data-link="purchase">Get Access</a>
+          <button
+            class="nav-toggle"
+            id="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ═══════════ HERO ═══════════ -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="hero-eyebrow">
+              <span class="dot" aria-hidden="true"></span>
+              Neverlose · CS:GO · <span data-version-short>v7</span>
+            </p>
+            <h1>drift-<span class="accent">yaw</span></h1>
+            <p class="hero-tagline">Advanced lua systems.</p>
+            <p class="hero-sub">
+              State of art tool for competitive Neverlose
+              users who want precision, not bullsh*t.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#pricing" data-link="purchase">Get Access</a>
+              <a class="btn btn-secondary" href="#features">Overview</a>
+            </div>
+            <div class="hero-badges" aria-label="Product highlights">
+              <span class="pill pill-accent"><strong>Neverlose</strong></span>
+              <span class="pill">Conditional States</span>
+              <span class="pill">Force Break LC</span>
+              <span class="pill">AI Peek</span>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-orbit" aria-hidden="true"></div>
+            <div
+              class="hero-carousel"
+              id="hero-carousel"
+              aria-roledescription="carousel"
+              aria-label="drift-yaw Neverlose menu screenshots"
+            >
+              <div class="hero-carousel__chrome">
+                <span class="hero-carousel__lights" aria-hidden="true">
+                  <i></i><i></i><i></i>
+                </span>
+                <span class="hero-carousel__title">
+                  <span class="hero-carousel__dot-live" aria-hidden="true"></span>
+                  neverlose · <span id="hero-slide-label">anti aim</span>
+                </span>
+                <span class="hero-carousel__counter" id="hero-counter" aria-live="polite">01 / 04</span>
+                <div class="hero-carousel__progress" aria-hidden="true">
+                  <span class="hero-carousel__progress-bar" id="hero-progress"></span>
+                </div>
+              </div>
+
+              <div class="hero-carousel__stage">
+                <div class="hero-carousel__viewport">
+                  <div class="hero-carousel__track" id="hero-track">
+                    <figure class="hero-carousel__slide is-active" data-index="0" aria-hidden="false">
+                      <img src="assets/screenshots/slide-1.png" alt="drift-yaw anti aim tab in Neverlose" width="1280" height="720" decoding="async" fetchpriority="high" />
+                    </figure>
+                    <figure class="hero-carousel__slide" data-index="1" aria-hidden="true">
+                      <img src="assets/screenshots/slide-2.png" alt="drift-yaw misc tab in Neverlose" width="1280" height="720" decoding="async" loading="lazy" />
+                    </figure>
+                    <figure class="hero-carousel__slide" data-index="2" aria-hidden="true">
+                      <img src="assets/screenshots/slide-3.png" alt="drift-yaw visuals tab in Neverlose" width="1280" height="720" decoding="async" loading="lazy" />
+                    </figure>
+                    <figure class="hero-carousel__slide" data-index="3" aria-hidden="true">
+                      <img src="assets/screenshots/slide-4.png" alt="drift-yaw config tab in Neverlose" width="1280" height="720" decoding="async" loading="lazy" />
+                    </figure>
+                  </div>
+                  <div class="hero-carousel__vignette" aria-hidden="true"></div>
+                  <div class="hero-carousel__flash" id="hero-flash" aria-hidden="true"></div>
+                </div>
+
+                <button type="button" class="hero-carousel__btn hero-carousel__btn--prev" id="hero-prev" aria-label="Previous screenshot">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <button type="button" class="hero-carousel__btn hero-carousel__btn--next" id="hero-next" aria-label="Next screenshot">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                    <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="hero-carousel__bar">
+                <div class="hero-carousel__dots" id="hero-dots" role="tablist" aria-label="Screenshot slides">
+                  <button type="button" class="is-active" role="tab" aria-selected="true" aria-label="Anti aim" data-index="0"><span>AA</span></button>
+                  <button type="button" role="tab" aria-selected="false" aria-label="Misc" data-index="1"><span>Misc</span></button>
+                  <button type="button" role="tab" aria-selected="false" aria-label="Visuals" data-index="2"><span>Vis</span></button>
+                  <button type="button" role="tab" aria-selected="false" aria-label="Config" data-index="3"><span>Cfg</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ PROOF STRIP ═══════════ -->
+      <div class="proof">
+        <div class="container">
+          <div class="proof-strip reveal">
+            <div class="proof-item">
+              <div class="num"><span>drift</span>-yaw</div>
+              <div class="desc">One-click anti aim mode</div>
+            </div>
+            <div class="proof-item">
+              <div class="num"><span>9</span> states</div>
+              <div class="desc">Conditional per-state builder</div>
+            </div>
+            <div class="proof-item">
+              <div class="num"><span>AI</span> tools</div>
+              <div class="desc">Peek, throw, and supertoss</div>
+            </div>
+            <div class="proof-item">
+              <div class="num"><span>Full</span> suite</div>
+              <div class="desc">Anti aim, defense, misc, visuals, config</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ FEATURES ═══════════ -->
+      <section class="section features" id="features">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Features</p>
+            <h2 class="section-title">Built for control, not clutter</h2>
+            <p class="section-lead">
+              Same structure as the script menu: Anti aim, Misc, Visuals, Config.
+            </p>
+          </div>
+
+          <div class="feature-tabs-wrap reveal">
+            <div class="feature-tabs" role="tablist" aria-label="Feature categories">
+              <button class="feature-tab" role="tab" aria-selected="true" data-feature-tab="antiaim" id="ftab-antiaim">
+                Anti aim
+              </button>
+              <button class="feature-tab" role="tab" aria-selected="false" data-feature-tab="misc" id="ftab-misc">
+                Misc
+              </button>
+              <button class="feature-tab" role="tab" aria-selected="false" data-feature-tab="visuals" id="ftab-visuals">
+                Visuals
+              </button>
+              <button class="feature-tab" role="tab" aria-selected="false" data-feature-tab="config" id="ftab-config">
+                Config
+              </button>
+            </div>
+
+            <!-- Anti aim (TAB: drift-yaw - anti aim) -->
+            <div
+              class="feature-panel active"
+              role="tabpanel"
+              data-feature-panel="antiaim"
+              aria-labelledby="ftab-antiaim"
+            >
+              <p class="feature-panel-lead">
+                Signature <strong class="text-accent">drift-yaw</strong> mode up front, then Conditional
+                builder depth when you want full control.
+              </p>
+              <div class="feature-grid">
+                <article class="feature-card feature-card--spotlight">
+                  <div class="feature-card-top">
+                    <div class="feature-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M8 18c2-4 3-8 4-10 1 2 2 6 4 10" stroke-linecap="round" />
+                        <path d="M6 14h12" stroke-linecap="round" opacity="0.45" />
+                        <circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none" />
+                      </svg>
+                    </div>
+                    <span class="feature-pill">Signature</span>
+                  </div>
+                  <h3>drift-yaw Mode</h3>
+                  <p>
+                    Advanced anti aim mode that never falls behind. One-click setup: switch Mode to
+                    <strong class="text-accent">drift-yaw</strong> and play.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 6h16M4 12h10M4 18h14" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Conditional builder</h3>
+                  <p>
+                    Switch Mode to Conditional for full per-state control: Builder, Standing, Moving,
+                    Slow Walking, Crouching, In Air, In Air &amp; Crouching, In Use, No Exploits.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 4v8l5 3" stroke-linecap="round" />
+                      <circle cx="12" cy="12" r="9" />
+                    </svg>
+                  </div>
+                  <h3>Pitch &amp; Yaw</h3>
+                  <p>
+                    Pitch: Disabled, Down, Fake Down, Fake Up. Yaw: Disabled, Backward, Static. Base:
+                    Local View / At Target. Offset Left / Offset Right.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 12h4l2-6 4 12 2-6h4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <h3>Yaw Modifier</h3>
+                  <p>
+                    Disabled, Center, Offset, Random, Spin, 3-Way, 5-Way. Manual Mode, Offset, Randomize,
+                    Offset #1 to #5.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <h3>Body Yaw</h3>
+                  <p>
+                    Inverter, Left/Right Limit, Options (Avoid Overlap, Jitter, Randomize Jitter), Delay,
+                    Freestanding Off / Peek Fake / Peek Real.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M8 12h8M12 8v8" stroke-linecap="round" />
+                      <circle cx="12" cy="12" r="9" />
+                    </svg>
+                  </div>
+                  <h3>Manual Yaw</h3>
+                  <p>
+                    Disabled / Left / Right / Forward. Disable Yaw Modifiers on manual. Arrows with color.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 12h16M12 4v16" stroke-linecap="round" opacity="0.4" />
+                      <path d="M7 12a5 5 0 0 1 10 0" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Freestanding &amp; Bombsite</h3>
+                  <p>
+                    Freestanding, Body Freestanding, Better Freestanding. Static Body Yaw On (Manual Yaw
+                    Base / Freestanding). Bombsite Fix.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 4v4M8 8l-3 2M16 8l3 2M6 16h12M9 20h6" stroke-linecap="round" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </div>
+                  <h3>Defensive AA</h3>
+                  <p>
+                    Pitch: None, Down, Up, Random. Yaw: None, Spinbot, Opposite, Opposite Jitter,
+                    Sideways, Random, 3-Way, 5-Way. Disablers, E-Spam while Safe Head, Edge Manual Yaw.
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <!-- Misc (TAB: drift-yaw - misc) -->
+            <div
+              class="feature-panel"
+              role="tabpanel"
+              data-feature-panel="misc"
+              aria-labelledby="ftab-misc"
+              hidden
+            >
+              <p class="feature-panel-lead">
+                Defense Options, AI Assistant, and Miscellaneous Options from the script.
+              </p>
+              <div class="feature-grid">
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M13 3L5 14h6l-1 7 9-12h-6l0-6z" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <h3>Force Break LC</h3>
+                  <p>
+                    Standing, Moving, Slow Walking, Crouching, In Air, Safe Head, Manual Yaw Base.
+                    Disable if Pin Pulled. Triggers: Weapon Switch, Flashed, Reloading, Flinching.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 18l6-6 4 4 6-8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <h3>Auto Retreat</h3>
+                  <p>Knife / Zeus with Knife Distance and Zeus Distance sliders.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7l7-4z" />
+                    </svg>
+                  </div>
+                  <h3>Avoid Backstab</h3>
+                  <p>Avoid Backstab switch under Defense Options.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="M12 7v5l3 2" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Warmup AA</h3>
+                  <p>Warmup AA toggle under Defense Options.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 3l7 4v5c0 4.5-3 8-7 9" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Safe Head</h3>
+                  <p>
+                    Standing, Crouching, Air Crouching, Air Crouching Knife, Air Crouching Taser,
+                    Distance.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 12h16" stroke-linecap="round" />
+                      <path d="M8 8v8M16 8v8" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Disable Fake Lag</h3>
+                  <p>
+                    Double Tap, Hide Shots, Standing, DT Heavy Pistols, DT Knife, DT High Firerate.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="12" cy="12" r="3" />
+                      <path
+                        d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <h3>Automatic Peek</h3>
+                  <p>
+                    Hotkey, Simulation Time, Rate Limit, Forced Hit Chance, Hitboxes, Weapons, Path
+                    Visual color.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 4v8l4 2" stroke-linecap="round" />
+                      <circle cx="12" cy="12" r="9" />
+                    </svg>
+                  </div>
+                  <h3>Auto Throw Grenade</h3>
+                  <p>Minimum Damage, Molotov Radius, Teammate Protection.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M5 19L19 5M19 5h-6M19 5v6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <h3>Supertoss</h3>
+                  <p>Supertoss switch under AI Assistant.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M8 18c2-4 3-8 4-10 1 2 2 6 4 10" stroke-linecap="round" />
+                      <path d="M6 14h12" stroke-linecap="round" opacity="0.5" />
+                    </svg>
+                  </div>
+                  <h3>Animation Breakers</h3>
+                  <p>
+                    Break Leg, Break Lean, Reset Grounding Pitch, Force Sliding, Kangaroo. Conditions On
+                    Ground / In Air. Air/Ground Delta, Lean Type EarthQuake / Smoothing, Force Slide.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="3" y="6" width="18" height="12" rx="2" />
+                      <path d="M7 10h4M7 14h10" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Aspect Ratio</h3>
+                  <p>Slider with Off, 1:1, 5:4, 4:3, 16:10, 16:9, 21:9, and custom values.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M4 8h16M4 12h10M4 16h14" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Animated Clantag</h3>
+                  <p>Animated Clantag switch under Miscellaneous Options.</p>
+                </article>
+              </div>
+            </div>
+
+            <!-- Visuals (TAB: drift-yaw - visuals) -->
+            <div
+              class="feature-panel"
+              role="tabpanel"
+              data-feature-panel="visuals"
+              aria-labelledby="ftab-visuals"
+              hidden
+            >
+              <p class="feature-panel-lead">
+                Indicators, Positions, and Overlays (Hitlogs, Custom Scope).
+              </p>
+              <div class="feature-grid">
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="4" y="5" width="16" height="14" rx="2" />
+                      <path d="M8 10h4M8 14h8" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Indicators</h3>
+                  <p>
+                    Elements: Title, State, Damage, Slowed. Color, Damage Color, Slowed Color. Positions
+                    draggable with menu open.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 5v14M5 12h14" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Positions</h3>
+                  <p>Reset Positions for Damage, Slowed, and Hitlog placement.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M6 7h12M6 12h8M6 17h10" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Hitlogs</h3>
+                  <p>
+                    Options: Screen Log, Console Log, Damage Markers, Show Hitbox, Show HP. Accent Color,
+                    Max Screen Lines, Screen Duration, position.
+                  </p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 4v3M12 17v3M4 12h3M17 12h3" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Custom Scope</h3>
+                  <p>Length, Base Gap, Thickness, Dynamic Gap, Inner Color, Outer Color.</p>
+                </article>
+              </div>
+            </div>
+
+            <!-- Config (TAB: drift-yaw - config) -->
+            <div
+              class="feature-panel"
+              role="tabpanel"
+              data-feature-panel="config"
+              aria-labelledby="ftab-config"
+              hidden
+            >
+              <p class="feature-panel-lead">
+                Profiles and Clipboard from the script config tab.
+              </p>
+              <div class="feature-grid">
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M8 7h8M8 12h5M8 17h8" stroke-linecap="round" />
+                      <rect x="4" y="4" width="16" height="16" rx="2" />
+                    </svg>
+                  </div>
+                  <h3>Profiles</h3>
+                  <p>Saved Configurations list with Name, Save, Load, Delete.</p>
+                </article>
+                <article class="feature-card">
+                  <div class="feature-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <rect x="5" y="4" width="14" height="16" rx="2" />
+                      <path d="M9 9h6M9 13h6M9 17h3" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <h3>Clipboard</h3>
+                  <p>Import and Export config strings.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ═══════════ PURCHASE ═══════════ -->
+      <section class="section purchase" id="pricing">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Access</p>
+            <h2 class="section-title">One payment. Full script.</h2>
+            <p class="section-lead">
+              Lifetime for Neverlose CS:GO. Same four tabs as in-menu: anti aim, misc, visuals, config.
+            </p>
+          </div>
+
+          <div class="buy-panel reveal" id="buy-panel">
+            <!-- Filled by main.js from config -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ FAQ ═══════════ -->
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">FAQ</p>
+            <h2 class="section-title">Straight answers</h2>
+            <p class="section-lead">Platform scope, configs, updates. No marketing fog.</p>
+          </div>
+
+          <div class="faq-list reveal">
+            <details class="faq-item">
+              <summary>Is drift-yaw Neverlose only?</summary>
+              <div class="faq-body">
+                Yes. drift-yaw is built and supported for Neverlose only. There is no Gamesense, Fatality, or
+                other platform build.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Can I share configs with teammates?</summary>
+              <div class="faq-body">
+                Yes. Clipboard Import / Export and config profiles are included. Share exported strings
+                with people who also own the script.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>How do updates work?</summary>
+              <div class="faq-body">
+                Lifetime includes updates while drift-yaw is maintained for current CS:GO / Neverlose
+                APIs. Changelog posts land in Discord.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>What is your refund policy?</summary>
+              <div class="faq-body">
+                Placeholder: digital licenses are typically final sale once access is delivered. Define your
+                real policy here before selling, e.g. no refunds after license key delivery, or a short window
+                if the product fails to load on Neverlose.
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Is this CS:GO only?</summary>
+              <div class="faq-body">
+                Yes. drift-yaw targets CS:GO via Neverlose. There is no CS2 branch.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════ FINAL CTA ═══════════ -->
+      <div class="cta-band">
+        <div class="container">
+          <div class="cta-box reveal">
+            <h2>Ready to set the angles?</h2>
+            <p>
+              Conditional AA, defense, AI helpers, and clean visuals, shipped as one Neverlose script.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#pricing" data-link="purchase">Get Access</a>
+              <a class="btn btn-secondary" href="#" data-link="discord">Join Discord</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a href="#top" class="logo">
+              <img class="logo-mark" src="assets/logo.svg" width="28" height="28" alt="" />
+              drift-yaw
+            </a>
+            <p>Conditional anti-aim and utility for Neverlose CS:GO. Angles that don't sit still.</p>
+          </div>
+          <div class="footer-cols">
+            <div class="footer-col">
+              <h4>Product</h4>
+              <a href="#features">Features</a>
+              <a href="#pricing">Pricing</a>
+              <a href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+              <h4>Community</h4>
+              <a href="#" data-link="discord">Discord</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span id="year">2026</span> drift-yaw. All rights reserved.</span>
+          <span>Not affiliated with Valve or Neverlose.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="scripts/config.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
